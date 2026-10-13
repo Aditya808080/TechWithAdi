@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MySQL Backup & Restore Guide + Interview Questions | TechWithAdi</title>
+<style>
+body{font-family:Arial,sans-serif;background:#020b2d;color:#fff;margin:0;line-height:1.7}
+header{background:#06113d;padding:30px;text-align:center}
+.container{max-width:1100px;margin:auto;padding:20px}
+.card{background:rgba(255,255,255,.08);padding:20px;border-radius:12px;margin:15px 0}
+h1,h2,h3{color:#38bdf8}
+button{padding:12px 18px;border:none;border-radius:8px;margin:5px;cursor:pointer}
+pre{background:#000;padding:12px;border-radius:8px;color:#67e8f9;overflow:auto}
+#hi{display:none}
+</style>
+<script>
+function showEN(){document.getElementById('en').style.display='block';document.getElementById('hi').style.display='none';}
+function showHI(){document.getElementById('en').style.display='none';document.getElementById('hi').style.display='block';}
+</script>
+</head>
+<body>
+<header>
+<h1>MySQL Backup & Restore Guide + Interview Questions</h1>
+<p>English + हिन्दी | TechWithAdi</p>
+<button onclick="showEN()">🇬🇧 English</button>
+<button onclick="showHI()">🇮🇳 हिन्दी</button>
+</header>
+
+<div class="container">
+
+<div id="en">
+<div class="card">
+<h2>MySQL Backup Guide</h2>
+<p>Backups protect your database from accidental deletion, corruption and server failures.</p>
+
+<h3>Backup Single Database</h3>
+<pre>mysqldump -u root -p database_name > backup.sql</pre>
+
+<h3>Backup All Databases</h3>
+<pre>mysqldump -u root -p --all-databases > all_backup.sql</pre>
+
+<h3>Restore Database</h3>
+<pre>mysql -u root -p database_name < backup.sql</pre>
+
+<h3>Cron Job Automation</h3>
+<pre>0 2 * * * mysqldump -u root -pPASSWORD dbname > /backup/db.sql</pre>
+
+<h3>Best Practices</h3>
+<ul>
+<li>Take regular backups</li>
+<li>Store backups on another server</li>
+<li>Test restores regularly</li>
+<li>Use compression for large databases</li>
+</ul>
+</div>
+
+<h2>Top 20 MySQL Interview Questions</h2>
+<div class='card'><h3>Q1. What is mysqldump?</h3><p>Utility used for logical MySQL backups.</p></div><div class='card'><h3>Q2. How do you backup a database?</h3><p>Using mysqldump command.</p></div><div class='card'><h3>Q3. How do you restore a database?</h3><p>Using mysql command with SQL dump.</p></div><div class='card'><h3>Q4. What is logical backup?</h3><p>Backup stored as SQL statements.</p></div><div class='card'><h3>Q5. What is physical backup?</h3><p>Copy of actual database files.</p></div><div class='card'><h3>Q6. How do you backup all databases?</h3><p>Use --all-databases option.</p></div><div class='card'><h3>Q7. What is binary logging?</h3><p>Records database changes for recovery.</p></div><div class='card'><h3>Q8. How do you automate backups?</h3><p>Using cron jobs.</p></div><div class='card'><h3>Q9. What is point-in-time recovery?</h3><p>Restore database to a specific moment.</p></div><div class='card'><h3>Q10. How do you check MySQL version?</h3><p>SELECT VERSION();</p></div><div class='card'><h3>Q11. What is InnoDB?</h3><p>Default MySQL storage engine.</p></div><div class='card'><h3>Q12. What is MyISAM?</h3><p>Older MySQL storage engine.</p></div><div class='card'><h3>Q13. How do you create a database?</h3><p>CREATE DATABASE dbname;</p></div><div class='card'><h3>Q14. How do you create a user?</h3><p>CREATE USER statement.</p></div><div class='card'><h3>Q15. How do you grant privileges?</h3><p>GRANT command.</p></div><div class='card'><h3>Q16. How do you view databases?</h3><p>SHOW DATABASES;</p></div><div class='card'><h3>Q17. How do you view tables?</h3><p>SHOW TABLES;</p></div><div class='card'><h3>Q18. What causes backup failures?</h3><p>Permissions, storage, locks.</p></div><div class='card'><h3>Q19. Backup best practices?</h3><p>Regular backups and restore testing.</p></div><div class='card'><h3>Q20. Explain backup workflow.</h3><p>Backup → Verify → Store → Restore Test.</p></div></div><div id='hi'><div class='card'><h2>MySQL Backup & Restore Guide</h2><p>Database backup data loss से बचाने के लिए आवश्यक है।</p><h3>Single Database Backup</h3><pre>mysqldump -u root -p database_name > backup.sql</pre><h3>Restore Database</h3><pre>mysql -u root -p database_name < backup.sql</pre></div><h2>Top 20 MySQL Interview Questions</h2><div class='card'><h3>प्रश्न 1. mysqldump क्या है?</h3><p>MySQL logical backup utility।</p></div><div class='card'><h3>प्रश्न 2. Database backup कैसे लेते हैं?</h3><p>mysqldump command से।</p></div><div class='card'><h3>प्रश्न 3. Database restore कैसे करते हैं?</h3><p>mysql command से।</p></div><div class='card'><h3>प्रश्न 4. Logical backup क्या है?</h3><p>SQL statements के रूप में backup।</p></div><div class='card'><h3>प्रश्न 5. Physical backup क्या है?</h3><p>Database files की copy।</p></div><div class='card'><h3>प्रश्न 6. सभी databases का backup कैसे लें?</h3><p>--all-databases option से।</p></div><div class='card'><h3>प्रश्न 7. Binary Logging क्या है?</h3><p>Database changes record करता है।</p></div><div class='card'><h3>प्रश्न 8. Backup automate कैसे करें?</h3><p>Cron jobs से।</p></div><div class='card'><h3>प्रश्न 9. Point-in-time recovery क्या है?</h3><p>Specific time तक restore करना।</p></div><div class='card'><h3>प्रश्न 10. MySQL version कैसे देखें?</h3><p>SELECT VERSION();</p></div><div class='card'><h3>प्रश्न 11. InnoDB क्या है?</h3><p>Default storage engine।</p></div><div class='card'><h3>प्रश्न 12. MyISAM क्या है?</h3><p>पुराना storage engine।</p></div><div class='card'><h3>प्रश्न 13. Database कैसे create करें?</h3><p>CREATE DATABASE command।</p></div><div class='card'><h3>प्रश्न 14. User कैसे create करें?</h3><p>CREATE USER statement।</p></div><div class='card'><h3>प्रश्न 15. Privileges कैसे दें?</h3><p>GRANT command।</p></div><div class='card'><h3>प्रश्न 16. Databases कैसे देखें?</h3><p>SHOW DATABASES;</p></div><div class='card'><h3>प्रश्न 17. Tables कैसे देखें?</h3><p>SHOW TABLES;</p></div><div class='card'><h3>प्रश्न 18. Backup failure क्यों होती है?</h3><p>Permissions या storage issues।</p></div><div class='card'><h3>प्रश्न 19. Backup best practices क्या हैं?</h3><p>Regular backup और testing।</p></div><div class='card'><h3>प्रश्न 20. Backup workflow समझाइए।</h3><p>Backup → Verify → Store → Test Restore.</p></div></div></div></body></html>

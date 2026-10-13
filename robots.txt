@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://techwithadi.in/sitemap.xml

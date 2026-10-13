@@ -1,0 +1,85 @@
+
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Segoe UI,sans-serif;background:#020b2d;color:#fff}
+canvas{position:fixed;inset:0;z-index:-1}
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:s5px 6%;
+    background:rgba(0,0,0,.25);
+    backdrop-filter:blur(12px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700}
+.brand img{width:58px;border-radius:12px}
+.menu a{color:#fff;text-decoration:none;margin-left:20px}
+.hero{
+    text-align:center;
+    min-height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:120px 20px 80px;
+}
+.hero-logo{width:220px;max-width:80%;border-radius:20px}
+h1{font-size:3rem}
+#typed{color:#38bdf8;margin:15px 0}
+section{padding:70px 6%;text-align:center}
+.glass,.card{background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border-radius:18px;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:25px}
+.card:hover{transform:translateY(-5px)}
+.contact{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.contact a{color:#38bdf8;text-decoration:none}
+footer{text-align:center;padding:25px;border-top:1px solid rgba(255,255,255,.1);margin-top:30px}
+
+@media(max-width:768px){
+nav{flex-direction:column;gap:10px}
+.menu{display:flex;flex-wrap:wrap;justify-content:center}
+.menu a{margin:5px 10px}
+h1{font-size:2rem}
+.hero{
+    min-height:60vh;
+    padding:120px 15px 60px;
+}
+}
+
+#blogs{
+    text-align:center;
+}
+
+.blog-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:25px;
+}
+
+.blog-grid .glass{
+    padding:20px;
+}
+
+.blog-grid a{
+    color:#38bdf8;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.blog-grid a:hover{
+    text-decoration:underline;
+}
+footer a{
+    color:#38bdf8;
+    text-decoration:none;
+    margin:0 5px;
+}
+
+footer a:hover{
+    text-decoration:underline;
+}
+nav{
+    border-bottom:1px solid rgba(255,255,255,.08);
+}

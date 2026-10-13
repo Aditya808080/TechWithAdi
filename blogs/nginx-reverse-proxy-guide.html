@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nginx Reverse Proxy Guide + Interview Questions | TechWithAdi</title>
+<style>
+body{font-family:Arial,sans-serif;background:#020b2d;color:#fff;margin:0;line-height:1.7}
+header{background:#06113d;padding:30px;text-align:center}
+.container{max-width:1100px;margin:auto;padding:20px}
+.card{background:rgba(255,255,255,.08);padding:20px;border-radius:12px;margin:15px 0}
+h1,h2,h3{color:#38bdf8}
+button{padding:12px 18px;border:none;border-radius:8px;margin:5px;cursor:pointer}
+pre{background:#000;padding:12px;border-radius:8px;color:#67e8f9;overflow:auto}
+#hi{display:none}
+</style>
+<script>
+function showEN(){document.getElementById('en').style.display='block';document.getElementById('hi').style.display='none';}
+function showHI(){document.getElementById('en').style.display='none';document.getElementById('hi').style.display='block';}
+</script>
+</head>
+<body>
+<header>
+<h1>Nginx Reverse Proxy Guide + Interview Questions</h1>
+<p>English + हिन्दी | TechWithAdi</p>
+<button onclick="showEN()">🇬🇧 English</button>
+<button onclick="showHI()">🇮🇳 हिन्दी</button>
+</header>
+
+<div class="container">
+
+<div id="en">
+<div class="card">
+<h2>What is Nginx?</h2>
+<p>Nginx is a high-performance web server, reverse proxy and load balancer.</p>
+
+<h2>What is a Reverse Proxy?</h2>
+<p>A reverse proxy receives requests from users and forwards them to backend applications.</p>
+
+<h2>Install Nginx</h2>
+<pre>sudo apt install nginx -y</pre>
+
+<h2>Check Status</h2>
+<pre>sudo systemctl status nginx</pre>
+
+<h2>Sample Reverse Proxy Configuration</h2>
+<pre>
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+</pre>
+
+<h2>Test Configuration</h2>
+<pre>sudo nginx -t</pre>
+
+<h2>Restart Nginx</h2>
+<pre>sudo systemctl restart nginx</pre>
+
+<h2>Benefits</h2>
+<ul>
+<li>Improved security</li>
+<li>Load balancing</li>
+<li>SSL termination</li>
+<li>Performance optimization</li>
+</ul>
+</div>
+
+<h2>Top 20 Nginx Interview Questions</h2>
+<div class='card'><h3>Q1. What is Nginx?</h3><p>High-performance web server and reverse proxy.</p></div><div class='card'><h3>Q2. What is a Reverse Proxy?</h3><p>Forwards client requests to backend servers.</p></div><div class='card'><h3>Q3. Difference between Nginx and Apache?</h3><p>Nginx uses event-driven architecture.</p></div><div class='card'><h3>Q4. What is proxy_pass?</h3><p>Directive used to forward requests.</p></div><div class='card'><h3>Q5. How do you test configuration?</h3><p>nginx -t</p></div><div class='card'><h3>Q6. How do you restart Nginx?</h3><p>systemctl restart nginx</p></div><div class='card'><h3>Q7. What is load balancing?</h3><p>Distributes traffic across servers.</p></div><div class='card'><h3>Q8. What is SSL termination?</h3><p>Handles SSL at proxy layer.</p></div><div class='card'><h3>Q9. What is a server block?</h3><p>Equivalent to Apache VirtualHost.</p></div><div class='card'><h3>Q10. Where is nginx.conf located?</h3><p>Usually /etc/nginx/nginx.conf</p></div><div class='card'><h3>Q11. How do you view logs?</h3><p>Check access.log and error.log</p></div><div class='card'><h3>Q12. What is upstream?</h3><p>Defines backend servers.</p></div><div class='card'><h3>Q13. How do you enable gzip?</h3><p>Using gzip directives.</p></div><div class='card'><h3>Q14. What is caching?</h3><p>Stores content for faster delivery.</p></div><div class='card'><h3>Q15. How do you redirect HTTP to HTTPS?</h3><p>Using return 301 directive.</p></div><div class='card'><h3>Q16. What causes 502 Bad Gateway?</h3><p>Backend service unavailable.</p></div><div class='card'><h3>Q17. How do you secure Nginx?</h3><p>Use SSL, firewall and updates.</p></div><div class='card'><h3>Q18. How do you reload configuration?</h3><p>systemctl reload nginx</p></div><div class='card'><h3>Q19. Best practices?</h3><p>Monitoring, SSL and backups.</p></div><div class='card'><h3>Q20. Explain reverse proxy workflow.</h3><p>Client → Nginx → Backend → Client.</p></div></div><div id='hi'><div class='card'><h2>Nginx Reverse Proxy Guide</h2><p>Nginx एक high-performance web server और reverse proxy है।</p><pre>sudo apt install nginx -y</pre></div><h2>Top 20 Nginx Interview Questions</h2><div class='card'><h3>प्रश्न 1. Nginx क्या है?</h3><p>High-performance web server और reverse proxy।</p></div><div class='card'><h3>प्रश्न 2. Reverse Proxy क्या है?</h3><p>Client requests backend servers को forward करता है।</p></div><div class='card'><h3>प्रश्न 3. Nginx और Apache में अंतर?</h3><p>Nginx event-driven architecture उपयोग करता है।</p></div><div class='card'><h3>प्रश्न 4. proxy_pass क्या है?</h3><p>Request forwarding directive।</p></div><div class='card'><h3>प्रश्न 5. Configuration test कैसे करें?</h3><p>nginx -t</p></div><div class='card'><h3>प्रश्न 6. Nginx restart कैसे करें?</h3><p>systemctl restart nginx</p></div><div class='card'><h3>प्रश्न 7. Load balancing क्या है?</h3><p>Traffic distribute करना।</p></div><div class='card'><h3>प्रश्न 8. SSL Termination क्या है?</h3><p>SSL handling proxy layer पर।</p></div><div class='card'><h3>प्रश्न 9. Server Block क्या है?</h3><p>Apache VirtualHost जैसा।</p></div><div class='card'><h3>प्रश्न 10. nginx.conf कहाँ होती है?</h3><p>/etc/nginx/nginx.conf</p></div><div class='card'><h3>प्रश्न 11. Logs कैसे देखें?</h3><p>access.log और error.log</p></div><div class='card'><h3>प्रश्न 12. Upstream क्या है?</h3><p>Backend servers define करता है।</p></div><div class='card'><h3>प्रश्न 13. Gzip कैसे enable करें?</h3><p>gzip directives से।</p></div><div class='card'><h3>प्रश्न 14. Caching क्या है?</h3><p>Content cache करना।</p></div><div class='card'><h3>प्रश्न 15. HTTP को HTTPS पर redirect कैसे करें?</h3><p>return 301</p></div><div class='card'><h3>प्रश्न 16. 502 Bad Gateway क्यों आता है?</h3><p>Backend unavailable।</p></div><div class='card'><h3>प्रश्न 17. Nginx secure कैसे करें?</h3><p>SSL, firewall और updates।</p></div><div class='card'><h3>प्रश्न 18. Configuration reload कैसे करें?</h3><p>systemctl reload nginx</p></div><div class='card'><h3>प्रश्न 19. Best practices क्या हैं?</h3><p>Monitoring, SSL, backups।</p></div><div class='card'><h3>प्रश्न 20. Reverse proxy workflow समझाइए।</h3><p>Client → Nginx → Backend → Client।</p></div></div></div></body></html>

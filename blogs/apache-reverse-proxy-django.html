@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apache Reverse Proxy for Django | TechWithAdi</title>
+<meta name="description" content="Apache Reverse Proxy for Django setup ki complete Hindi guide.">
+<link rel="canonical" href="https://techwithadi.in/blogs/apache-reverse-proxy-django.html">
+<style>
+body{background:#0b1120;color:#e2e8f0;font-family:Arial,sans-serif;line-height:1.8;max-width:900px;margin:auto;padding:20px}
+h1,h2{color:#38bdf8}
+pre{background:#020617;padding:12px;border-radius:8px;overflow:auto;color:#67e8f9}
+a{color:#38bdf8}
+.tip{background:#111827;padding:15px;border-left:4px solid #38bdf8}
+</style>
+</head>
+<body>
+
+<h1><a href="https://techwithadi.in" style="text-decoration:none;color:#38bdf8">TechWithAdi</a></h1>
+
+<h1>Apache Reverse Proxy for Django (Complete Hindi Guide)</h1>
+
+<p>Django applications ko production me deploy karte waqt Apache Reverse Proxy ka use bahut common hai. Apache client requests ko receive karta hai aur Gunicorn/Django application tak forward karta hai.</p>
+
+<h2>Architecture</h2>
+<pre>
+User --> Apache --> Gunicorn --> Django App
+</pre>
+
+<h2>Step 1: Apache Install Karein</h2>
+<pre>
+sudo apt update
+sudo apt install apache2 -y
+</pre>
+
+<h2>Step 2: Required Modules Enable Karein</h2>
+<pre>
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+sudo a2enmod headers
+sudo systemctl restart apache2
+</pre>
+
+<h2>Step 3: Gunicorn Start Karein</h2>
+<pre>
+gunicorn --bind 127.0.0.1:8000 project.wsgi
+</pre>
+
+<h2>Step 4: Apache VirtualHost Configure Karein</h2>
+<pre>
+&lt;VirtualHost *:80&gt;
+    ServerName example.com
+
+    ProxyPass / http://127.0.0.1:8000/
+    ProxyPassReverse / http://127.0.0.1:8000/
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</pre>
+
+<h2>Step 5: Site Enable Karein</h2>
+<pre>
+sudo a2ensite mysite.conf
+sudo systemctl reload apache2
+</pre>
+
+<h2>Configuration Test</h2>
+<pre>
+sudo apachectl configtest
+</pre>
+
+<div class="tip">
+Tip: Production environment me Gunicorn ko Supervisor ya Systemd service ke saath run karein.
+</div>
+
+<h2>Common Errors</h2>
+
+<h3>502 Bad Gateway</h3>
+<pre>
+sudo systemctl status gunicorn
+</pre>
+
+<h3>503 Service Unavailable</h3>
+<p>Gunicorn service down ho sakti hai.</p>
+
+<h3>Permission Denied</h3>
+<p>Logs aur application directory permissions verify karein.</p>
+
+<h2>Useful Commands</h2>
+<pre>
+sudo systemctl restart apache2
+sudo systemctl status apache2
+sudo tail -f /var/log/apache2/error.log
+</pre>
+
+<h2>FAQ</h2>
+
+<p><strong>Apache ya Nginx?</strong><br>
+Dono achhe hain, lekin Apache beginners ke liye easy hota hai.</p>
+
+<p><strong>Kya SSL add kar sakte hain?</strong><br>
+Haan, Let's Encrypt aur Certbot ka use karke SSL enable kar sakte hain.</p>
+
+<h2>निष्कर्ष</h2>
+
+<p>Apache Reverse Proxy Django deployment ka important part hai. Sahi configuration ke saath aap secure aur scalable production environment bana sakte hain.</p>
+
+<hr>
+
+<p>Related Articles:</p>
+<ul>
+<li>Ubuntu Redis Connection Refused Fix</li>
+<li>Docker Installation on Ubuntu 24.04</li>
+<li>Top Linux Commands Every SysAdmin Should Know</li>
+<li>RAID vs LVM Explained</li>
+</ul>
+
+<footer>
+© 2026 TechWithAdi | https://techwithadi.in
+</footer>
+
+</body>
+</html>

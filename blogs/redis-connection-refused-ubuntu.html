@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ubuntu में Redis Connection Refused Error को कैसे Fix करें? | TechWithAdi</title>
+<meta name="description" content="Ubuntu में Redis Connection Refused Error को fix करने की complete Hindi guide.">
+<link rel="canonical" href="https://techwithadi.in/blogs/redis-connection-refused-ubuntu.html">
+</head>
+<body style="background:#0b1120;color:#e2e8f0;font-family:Arial,sans-serif;max-width:900px;margin:auto;padding:20px;line-height:1.8">
+
+<header style="text-align:center">
+<a href="https://techwithadi.in" style="text-decoration:none;color:#38bdf8">
+<h1>TechWithAdi</h1>
+</a>
+</header>
+
+<h1>Ubuntu में Redis Connection Refused Error को कैसे Fix करें? (100% Working Guide)</h1>
+
+<p>अगर आप Ubuntu Server पर Redis इस्तेमाल कर रहे हैं और आपको यह error दिखाई दे रही है:</p>
+
+<pre>Could not connect to Redis at 127.0.0.1:6379: Connection refused</pre>
+
+<p>यह Redis की सबसे common problems में से एक है।</p>
+
+<h2>Step 1: Redis Service Status Check करें</h2>
+<pre>sudo systemctl status redis-server</pre>
+
+<h2>Step 2: Redis Restart करें</h2>
+<pre>sudo systemctl restart redis-server</pre>
+
+<h2>Step 3: Port Check करें</h2>
+<pre>sudo ss -tulnp | grep 6379</pre>
+
+<h2>Step 4: Logs Check करें</h2>
+<pre>sudo journalctl -u redis-server -n 50</pre>
+
+<h2>Step 5: Configuration Verify करें</h2>
+<pre>
+bind 127.0.0.1
+port 6379
+protected-mode yes
+</pre>
+
+<h2>Step 6: Firewall Check करें</h2>
+<pre>sudo ufw status</pre>
+
+<h2>Step 7: Connectivity Test करें</h2>
+<pre>redis-cli ping</pre>
+
+<p>Expected Output:</p>
+<pre>PONG</pre>
+
+<h2>निष्कर्ष</h2>
+<p>
+Redis Connection Refused Error आमतौर पर Service Failure,
+Configuration Issue या Port Binding Problem की वजह से आती है.
+</p>
+
+<footer style="text-align:center;margin-top:40px">
+© 2026 TechWithAdi |
+<a href="https://techwithadi.in" style="color:#38bdf8">techwithadi.in</a>
+</footer>
+
+</body>
+</html>
